@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.where("name LIKE ?", "%#{params[:query]}%")
+    @users = User.where("name LIKE :query OR email LIKE :query OR phone LIKE :query OR cpf LIKE :query", query: "%#{params[:query]}%")
     render 'index'
   end
 
