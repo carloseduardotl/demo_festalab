@@ -1,4 +1,23 @@
 <%= form_tag(search_users_path, method: 'get') do %>
-  <%= text_field_tag :query, params[:query], placeholder: 'Search users...' %>
+  <div class="field">
+    <%= label_tag 'Name' %>
+    <%= text_field_tag :name, params[:name], placeholder: 'Search by name...' %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'Email' %>
+    <%= text_field_tag :email, params[:email], placeholder: 'Search by email...' %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'Phone' %>
+    <%= text_field_tag :phone, params[:phone], placeholder: 'Search by phone...' %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'CPF' %>
+    <%= text_field_tag :cpf, params[:cpf], placeholder: 'Search by cpf...' %>
+  </div>
+
   <%= submit_tag 'Search' %>
 <% end %>

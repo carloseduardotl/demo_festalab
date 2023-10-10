@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.where("name LIKE :query OR email LIKE :query OR phone LIKE :query OR cpf LIKE :query", query: "%#{params[:query]}%")
+    @users = User.where("name LIKE :name AND email LIKE :email AND phone LIKE :phone AND cpf LIKE :cpf", search_params)
     render 'index'
   end
 
@@ -72,4 +72,15 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :phone, :cpf)
     end
+
+
+  def search_params
+    {
+      name: "%#{params[:name]}%",
+      email: "%#{params[:email]}%",
+      phone: "%#{params[:phone]}%",
+      cpf: "%#{params[:cpf]}%"
+    }
+  end
+  
 end
